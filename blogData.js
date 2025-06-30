@@ -28,13 +28,13 @@ const blogPosts = [
                 <li><strong>HDL (Hardware Description Languages):</strong> Learning Verilog/VHDL for describing hardware behavior at different levels of abstraction.</li>
             </ul>
             <p class="mb-4 leading-relaxed">
-                The learning curve is steep, but the rewards are immense. Every problem solved feels like a mini-triumph, pushing me further into the depths of semiconductor physics and engineering. I'm excited to continue exploring advanced topics such as design for testability, low-power design techniques, and the impact of process variations on chip performance.
+                The learning curve is steep, but the rewards are immense. Every problem solved feels like a mini- triumph, pushing me further into the depths of semiconductor physics and engineering. I'm excited to continue exploring advanced topics such as design for testability, low-power design techniques, and the impact of process variations on chip performance.
             </p>
             <p class="mb-4 leading-relaxed">
                 This journey into VLSI design is not just about understanding circuits; it's about building the future of technology, one tiny transistor at a time. Stay tuned for more updates on my progress and insights!
             </p>
             <p class="mb-4 leading-relaxed italic text-gray-600">
-                "The only way to do great work is to love what you do." - Steve Jobs
+                "The only limit to our realization of tomorrow will be our doubts of today." - Franklin D. Roosevelt
             </p>
         `
     },
@@ -46,30 +46,20 @@ const blogPosts = [
         snippet: 'Building a simple To-Do List application taught me a lot about DOM manipulation, event listeners, and basic state management in JavaScript. It was a challenging yet rewarding experience that solidified my understanding of front-end development...',
         content: `
             <p class="mb-4 leading-relaxed">
-                My journey into practical web development took a significant step forward with my very first JavaScript project: a simple To-Do List application! This project, while seemingly basic, proved to be an invaluable learning experience, solidifying many foundational concepts of front-end development.
+                My "Interactive Digital Clock" was a foundational JavaScript project aimed at solidifying my understanding of real-time DOM updates and event handling. It's a clean, minimalistic clock that displays the current time and date, updating every second.
             </p>
-            <p class="mb-4 leading-relaxed">
-                The core of the project revolved around <strong>DOM manipulation</strong>. I learned how to select elements from the HTML, create new elements dynamically (like new list items for tasks), and remove them when a task was completed. It was incredibly satisfying to see my JavaScript code directly influence what was visible and interactive on the page.
-            </p>
-            <p class="mb-4 leading-relaxed">
-                Implementing <strong>event listeners</strong> was another key aspect. Attaching listeners to buttons (for adding tasks) and to the list items themselves (for marking as complete or deleting) taught me how to make the application respond to user interactions. The <code>click</code> event became my best friend!
-            </p>
-            <h2 class="text-2xl font-semibold text-gray-900 mb-3 mt-6">Key Learnings:</h2>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-3 mt-6">Technical Aspects:</h2>
             <ul class="list-disc list-inside mb-4 pl-4 leading-relaxed">
-                <li><strong>querySelector & createElement:</strong> Mastering how to grab existing elements and spin up new ones.</li>
-                <li><strong>addEventListener:</strong> Making the page dynamic and reactive to user input.</li>
-                <li><strong>Basic State Management:</strong> Even for a simple app, understanding how to keep track of tasks (e.g., in an array) and update the UI based on that data was crucial.</li>
-                <li><strong>CSS Manipulation:</strong> Toggling classes (like <code>line-through</code> for completed tasks) to visually represent changes.</li>
-                <li><strong>Form Handling:</strong> Capturing user input from text fields.</li>
+                <li><strong><code>setInterval()</code>:</strong> Used to update the time every second, ensuring accuracy.</li>
+                <li><strong><code>Date</code> Object:</strong> Leveraged JavaScript's built-in <code>Date</code> object to fetch current hours, minutes, seconds, and date information.</li>
+                <li><strong>Conditional Rendering:</strong> Implemented logic for AM/PM format and adding leading zeros for single-digit numbers.</li>
+                <li><strong>Styling with CSS:</strong> Utilized CSS for a sleek design, including a toggle for light and dark modes to enhance user preference.</li>
             </ul>
             <p class="mb-4 leading-relaxed">
-                Debugging was certainly part of the process, and the browser's developer tools became indispensable. Understanding error messages and using <code>console.log()</code> to trace variable values helped me pinpoint issues and ultimately made me a more resilient coder.
-            </p>
-            <p class="mb-4 leading-relaxed">
-                This project, though small, built immense confidence and provided a solid foundation for more complex JavaScript applications. It showed me the power of JavaScript to bring static HTML to life.
+                This project reinforced the importance of client-side scripting for dynamic web content and provided a good exercise in handling time-based operations in JavaScript.
             </p>
             <p class="mb-4 leading-relaxed italic text-gray-600">
-                "The best way to predict the future is to create it." - Peter Drucker
+                "Code is like humor. When you have to explain it, it’s bad." - Cory House
             </p>
         `
     },

@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aditya Ladhane - Home</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -15,8 +13,8 @@
         /* Custom styles for section titles and body font */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light blue-gray background */
-            color: #334155; /* Darker gray text */
+            background-color: #f0fdf4; /* Light green-gray background */
+            color: #1f2937; /* Darker text for contrast */
         }
         .section-title {
             position: relative;
@@ -30,7 +28,7 @@
             bottom: 0;
             width: 70%; /* Shorter line */
             height: 3px;
-            background-color: #6366f1; /* Indigo color for underline */
+            background-color: #166534; /* Green-800 for underline */
             border-radius: 9999px; /* Rounded line */
         }
         /* Add padding to the top of the main content area to account for fixed navbar */
@@ -60,7 +58,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle text shadow */
         }
         .text-yellow-300 {
-            color: #fde047; /* Ensure good contrast with new hero colors if they change */
+            color: #fde047; /* Retained: A bright accent color, complements green */
         }
 
         /* Testimonials Scrolling Animation */
@@ -71,75 +69,80 @@
 
         .testimonials-container {
             overflow: hidden;
-            /* white-space: nowrap; - Removed from here to allow text inside cards to wrap */
         }
 
         .testimonials-wrapper {
-            display: inline-flex; /* Use inline-flex to keep items in a row and allow scrolling */
-            animation: scrollTestimonials 90s linear infinite; /* Adjust speed as needed */
+            display: inline-flex;
+            animation: scrollTestimonials 90s linear infinite;
             animation-play-state: running;
             will-change: transform;
-            /* Ensure the wrapper content is wide enough for seamless loop */
-            /* This might need JavaScript to calculate actual content width if items are dynamic */
-            /* For fixed-width cards, this is usually 200% of the visible container width * 2 for duplication */
         }
         .testimonials-wrapper:hover {
-            animation-play-state: paused; /* Pause on hover */
+            animation-play-state: paused;
         }
 
         .testimonial-card {
-            flex-shrink: 0; /* Prevent cards from shrinking */
-            width: 350px; /* Fixed width for each card */
-            margin-right: 2rem; /* space between cards */
-            white-space: normal; /* Ensure text wraps within the card */
-            box-sizing: border-box; /* Include padding/border in width calculation */
+            flex-shrink: 0;
+            width: 350px;
+            margin-right: 2rem;
+            white-space: normal;
+            box-sizing: border-box;
         }
-        /* Ensure first card has no left margin for proper alignment */
         .testimonial-card:first-child {
             margin-left: 0;
+        }
+
+        /* Hero Section Background Image Styles */
+        .hero-bg-image {
+            background-image: url('Hero.jpg'); /* Your specified background image */
+            background-size: cover; /* Cover the entire section */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat */
+            position: relative; /* Needed for overlay positioning */
+            z-index: 0; /* Ensure it's behind content but above overlay */
+        }
+        /* REMOVED: .hero-bg-image::before overlay styles */
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the overlay */
         }
     </style>
 </head>
 <body class="antialiased">
-    <!-- Navbar -->
     <nav class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-10 rounded-b-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="flex items-baseline space-x-2">
-                <span class="text-2xl font-bold text-indigo-600 underline navbar-brand-font navbar-brand-name">Aditya</span>
+                <span class="text-2xl font-bold text-green-800 underline navbar-brand-font navbar-brand-name">Aditya</span>
                 <span class="text-lg italic text-gray-600 hidden sm:block navbar-brand-font tagline-subscript">learning, building, growing...</span>
             </a>
             <div class="hidden md:flex space-x-6 items-center">
-                <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">Home</a>
-                <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">About</a>
-                <a href="skills.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">Skills</a>
-                <a href="projects.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">Projects</a>
-                <a href="blog.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">Blog</a>
-                <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">Gallery</a>
-                <a href="index.html#contact" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors rounded-md px-3 py-2">Contact</a>
+                <a href="index.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">About</a>
+                <a href="skills.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Skills</a>
+                <a href="projects.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Projects</a>
+                <a href="blog.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Blog</a>
+                <a href="gallery.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Gallery</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Contact</a>
             </div>
-            <!-- Mobile Menu Button -->
             <div class="flex items-center md:hidden space-x-2">
-                <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700">
                     <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="md:hidden mt-4 hidden">
-            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">Home</a>
-            <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">About</a>
-            <a href="skills.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">Skills</a>
-            <a href="projects.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">Projects</a>
-            <a href="blog.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">Blog</a>
-            <a href="gallery.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">Gallery</a>
-            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition-colors">Contact</a>
+            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Home</a>
+            <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">About</a>
+            <a href="skills.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Skills</a>
+            <a href="projects.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Projects</a>
+            <a href="blog.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Blog</a>
+            <a href="gallery.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Gallery</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Contact</a>
         </div>
     </nav>
 
-    <!-- Development Warning Banner - START -->
-    <!-- To remove this later, simply delete this entire div and its corresponding JavaScript below -->
     <div id="development-warning-banner" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 sticky top-0 md:top-[64px] z-20 flex items-center justify-between shadow-md" role="alert">
         <div class="flex items-center">
             <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -157,12 +160,9 @@
             </svg>
         </button>
     </div>
-    <!-- Development Warning Banner - END -->
-
     <main>
-        <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-6 md:pt-0">
-            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between pl-8 md:pl-16">
+        <section class="min-h-screen flex items-center justify-center text-white py-20 px-6 md:pt-0 hero-bg-image">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between pl-8 md:pl-16 hero-content">
                 <div class="text-center md:text-left mb-10 md:mb-0 md:w-1/2 ">
                     <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down hero-title-font">
                         Hello,<br>I'm <br><span class="text-yellow-300">Aditya<br>Ladhane</span>
@@ -172,41 +172,29 @@
                     </p>
                 </div>
                 <div class="md:w-1/3 flex justify-center mt-8">
-                    <!-- Profile Picture with lazy loading and error fallback -->
-                    <img
-                        src="https://placehold.co/400x400/CCCCCC/FFFFFF?text=Loading..."
-                        data-src="Home1.webp"
-                        alt="Aditya Ladhane Profile Picture"
-                        class="shadow-2xl w-full h-auto max-w-sm animate-zoom-in"
-                        loading="lazy"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/FF0000/FFFFFF?text=Error+Loading'"
-                    >
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="py-16 bg-gray-100">
+        <section class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-4xl font-bold mb-12 text-center section-title text-indigo-700 mx-auto">What People Say</h2>
+                <h2 class="text-4xl font-bold mb-12 text-center section-title text-green-800 mx-auto">What People Say</h2>
                 
                 <div class="testimonials-container overflow-hidden">
                     <div id="testimonials-wrapper" class="testimonials-wrapper">
-                        <!-- Testimonial cards will be dynamically inserted here -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 px-6 bg-gray-50 rounded-b-xl shadow-inner md:py-20">
+        <section id="contact" class="py-16 px-6 bg-gray-100 rounded-b-xl shadow-inner md:py-20">
             <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-4xl font-bold mb-8 section-title text-indigo-700 mx-auto">Get in touch</h2>
+                <h2 class="text-4xl font-bold mb-8 section-title text-green-800 mx-auto">Get in touch</h2>
                 <p class="text-lg leading-relaxed mb-8 text-gray-800">
                     Don't be a stranger — drop a message!
                 </p>
                 <div class="flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:justify-center md:space-x-6">
-                    <a href="mailto:adityaladhane@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-indigo-700 transition-colors transform hover:scale-105">
+                    <a href="mailto:adityaladhane@gmail.com" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-800 transition-colors transform hover:scale-105">
                         Email Me
                     </a>
                     <a href="https://www.linkedin.com/in/adityaladhane/" target="_blank" class="bg-blue-700 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-800 transition-colors transform hover:scale-105">
@@ -220,7 +208,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 px-6 text-center rounded-t-xl">
         <div class="max-w-7xl mx-auto">
             <p>&copy; 2025 Aditya Ladhane. All rights reserved.</p>
@@ -228,6 +215,8 @@
     </footer>
 
     <script>
+        // All JavaScript code for index.html is consolidated here to prevent redeclaration errors
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -241,32 +230,28 @@
                     // For external links (to other HTML pages), navigate directly
                     window.location.href = this.getAttribute('href');
                 }
-
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu.classList.contains('flex')) {
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.classList.add('hidden');
-                }
             });
         });
 
-        // Mobile menu toggle (existing functionality)
+        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            mobileMenu.classList.toggle('flex-col');
-            mobileMenu.classList.toggle('items-start');
-            mobileMenu.classList.toggle('space-y-2');
-            mobileMenu.classList.toggle('py-2');
-            mobileMenu.classList.toggle('px-4');
-            mobileMenu.classList.toggle('bg-white');
-            mobileMenu.classList.toggle('rounded-b-lg');
-            mobileMenu.classList.toggle('shadow');
-        });
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                mobileMenu.classList.toggle('flex-col');
+                mobileMenu.classList.toggle('items-start');
+                mobileMenu.classList.toggle('space-y-2');
+                mobileMenu.classList.toggle('py-2');
+                mobileMenu.classList.toggle('px-4');
+                mobileMenu.classList.toggle('bg-white');
+                mobileMenu.classList.toggle('rounded-b-lg');
+                mobileMenu.classList.toggle('shadow');
+            });
+        }
+
 
         // Manual Lazy Loading Fallback for older browsers (though loading="lazy" is widely supported)
         document.addEventListener("DOMContentLoaded", function() {
