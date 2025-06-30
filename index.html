@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- New font for Hero -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
     <style>
         /* Custom styles for section titles and body font */
@@ -59,9 +59,44 @@
             font-family: 'Playfair Display', serif; /* Apply Playfair Display */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle text shadow */
         }
-        /* Hero tagline now also uses Playfair Display for consistency and style */
         .text-yellow-300 {
             color: #fde047; /* Ensure good contrast with new hero colors if they change */
+        }
+
+        /* Testimonials Scrolling Animation */
+        @keyframes scrollTestimonials {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); } /* Scrolls half the duplicated content width */
+        }
+
+        .testimonials-container {
+            overflow: hidden;
+            /* white-space: nowrap; - Removed from here to allow text inside cards to wrap */
+        }
+
+        .testimonials-wrapper {
+            display: inline-flex; /* Use inline-flex to keep items in a row and allow scrolling */
+            animation: scrollTestimonials 90s linear infinite; /* Adjust speed as needed */
+            animation-play-state: running;
+            will-change: transform;
+            /* Ensure the wrapper content is wide enough for seamless loop */
+            /* This might need JavaScript to calculate actual content width if items are dynamic */
+            /* For fixed-width cards, this is usually 200% of the visible container width * 2 for duplication */
+        }
+        .testimonials-wrapper:hover {
+            animation-play-state: paused; /* Pause on hover */
+        }
+
+        .testimonial-card {
+            flex-shrink: 0; /* Prevent cards from shrinking */
+            width: 350px; /* Fixed width for each card */
+            margin-right: 2rem; /* space between cards */
+            white-space: normal; /* Ensure text wraps within the card */
+            box-sizing: border-box; /* Include padding/border in width calculation */
+        }
+        /* Ensure first card has no left margin for proper alignment */
+        .testimonial-card:first-child {
+            margin-left: 0;
         }
     </style>
 </head>
@@ -103,6 +138,27 @@
         </div>
     </nav>
 
+    <!-- Development Warning Banner - START -->
+    <!-- To remove this later, simply delete this entire div and its corresponding JavaScript below -->
+    <div id="development-warning-banner" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 sticky top-0 md:top-[64px] z-20 flex items-center justify-between shadow-md" role="alert">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.487 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM10 11a1 1 0 100-2 1 1 0 000 2zm1-2a1 1 0 10-2 0V7a1 1 0 102 0v2z" clip-rule="evenodd"></path>
+            </svg>
+            <p class="font-semibold">This Website is still Under Development.</p>
+        </div>
+        <div class="text-sm">
+            <p>Kindly don't jump to any unnecessary conclusions after reading the articles here. These are for testing purposes only!</p>
+            <p class="mt-1 text-right">Thank you.</p>
+        </div>
+        <button id="close-warning-banner" class="ml-4 text-yellow-800 hover:text-yellow-900 focus:outline-none focus:ring-2 focus:ring-yellow-700 rounded-full p-1 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Development Warning Banner - END -->
+
     <main>
         <!-- Hero Section -->
         <section class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-6 md:pt-0">
@@ -114,11 +170,30 @@
                     <p class="text-xl md:text-2xl mb-8 animate-fade-in-up leading-relaxed ">
                         Just a student trying to make sense of it all.<br>Figuring life out, one step at a time.
                     </p>
-                    <!-- Removed "Connect with Me" button -->
                 </div>
-                <div class="md:w-1/3 flex justify-center mt-8"> <!-- Changed justify-end to justify-center -->
-                    <!-- Profile Picture -->
-                    <img src="Home1.webp" alt="Aditya Ladhane Profile Picture" class="shadow-2xl w-full h-auto max-w-sm animate-zoom-in">
+                <div class="md:w-1/3 flex justify-center mt-8">
+                    <!-- Profile Picture with lazy loading and error fallback -->
+                    <img
+                        src="https://placehold.co/400x400/CCCCCC/FFFFFF?text=Loading..."
+                        data-src="Home1.png"
+                        alt="Aditya Ladhane Profile Picture"
+                        class="shadow-2xl w-full h-auto max-w-sm animate-zoom-in"
+                        loading="lazy"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/FF0000/FFFFFF?text=Error+Loading'"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-12 text-center section-title text-indigo-700 mx-auto">What People Say</h2>
+                
+                <div class="testimonials-container overflow-hidden">
+                    <div id="testimonials-wrapper" class="testimonials-wrapper">
+                        <!-- Testimonial cards will be dynamically inserted here -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -191,6 +266,115 @@
             mobileMenu.classList.toggle('bg-white');
             mobileMenu.classList.toggle('rounded-b-lg');
             mobileMenu.classList.toggle('shadow');
+        });
+
+        // Manual Lazy Loading Fallback for older browsers (though loading="lazy" is widely supported)
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll('img[data-src][loading="lazy"]');
+
+            if ('IntersectionObserver' in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.removeAttribute('data-src');
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                // Fallback for browsers that do not support Intersection Observer (or loading="lazy")
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.removeAttribute('data-src');
+                });
+            }
+        });
+
+        // --- Testimonials Scrolling Logic ---
+        const testimonials = [
+            {
+                quote: "Aditya's got a real knack for this stuff! Super quick to pick things up, and genuinely impressive with how fast he gets it.",
+                author: "Dr. A. Sharma",
+                title: "Professor, D. Y. Patil Institute",
+                profilePic: "https://placehold.co/64x64/E0E7FF/4338CA?text=AS" // Placeholder for A. Sharma
+            },
+            {
+                quote: "Seriously, working with Aditya is a breeze. He's always got fresh ideas and a 'let's fix this!' attitude. Big fan!",
+                author: "Ms. B. Singh",
+                title: "Project Mentor",
+                profilePic: "https://placehold.co/64x64/DBEAFE/1D4ED8?text=BS" // Placeholder for B. Singh
+            },
+            {
+                quote: "You can just tell Aditya loves tech by his work. He's always diving into new tools and leveling up his skills. Awesome to see!",
+                author: "Mr. C. Kumar",
+                title: "Senior Developer",
+                profilePic: "https://placehold.co/64x64/D1FAE5/065F46?text=CK" // Placeholder for C. Kumar
+            },
+            {
+                quote: "Aditya's work is always top-notch, no kidding. He's super dependable – definitely someone you want on your team!",
+                author: "Ms. D. Reddy",
+                title: "Team Lead",
+                profilePic: "https://placehold.co/64x64/FCE7F3/BE185D?text=DR" // Placeholder for D. Reddy
+            },
+            {
+                quote: "This kid's got a bright future. Really solid on the web basics, and just generally a very keen student.",
+                author: "Mr. E. Patil",
+                title: "Industry Professional",
+                profilePic: "https://placehold.co/64x64/FFF7ED/D97706?text=EP" // Placeholder for E. Patil
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const testimonialsWrapper = document.getElementById('testimonials-wrapper');
+            if (testimonialsWrapper) {
+                // Duplicate testimonials for a seamless loop
+                const doubledTestimonials = [...testimonials, ...testimonials];
+
+                doubledTestimonials.forEach(testimonial => {
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card bg-white p-6 rounded-xl shadow-md';
+                    // Added flex and items-center to the header for image and text alignment
+                    card.innerHTML = `
+                        <div class="flex items-center mb-4">
+                            <img src="${testimonial.profilePic}" alt="${testimonial.author} profile picture" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/64x64/B91C1C/FFFFFF?text=Error';">
+                            <div>
+                                <div class="font-semibold text-gray-900">${testimonial.author}</div>
+                                <div class="text-sm text-gray-500">${testimonial.title}</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed">"${testimonial.quote}"</p>
+                    `;
+                    testimonialsWrapper.appendChild(card);
+                });
+            }
+
+            // --- Development Warning Banner Logic ---
+            const devWarningBanner = document.getElementById('development-warning-banner');
+            const closeWarningButton = document.getElementById('close-warning-banner');
+            const hasDismissedWarning = localStorage.getItem('adityaDevWarningDismissed');
+
+            // Show banner if not previously dismissed
+            if (devWarningBanner && !hasDismissedWarning) {
+                devWarningBanner.classList.remove('hidden');
+            } else if (devWarningBanner) {
+                devWarningBanner.classList.add('hidden'); // Ensure it's hidden if dismissed
+            }
+
+            // Add event listener to close button
+            if (closeWarningButton) {
+                closeWarningButton.addEventListener('click', () => {
+                    if (devWarningBanner) {
+                        devWarningBanner.classList.add('hidden');
+                        localStorage.setItem('adityaDevWarningDismissed', 'true'); // Remember dismissal
+                    }
+                });
+            }
         });
     </script>
 </body>
