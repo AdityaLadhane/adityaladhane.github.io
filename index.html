@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aditya Ladhane - Home</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -96,19 +98,28 @@
         .hero-bg-image {
             background-image: url('Hero.jpg'); /* Your specified background image */
             background-size: cover; /* Cover the entire section */
-            background-position: center; /* Center the image */
+            background-position: center; /* Default: center for larger screens */
             background-repeat: no-repeat; /* Do not repeat */
             position: relative; /* Needed for overlay positioning */
             z-index: 0; /* Ensure it's behind content but above overlay */
         }
-        /* REMOVED: .hero-bg-image::before overlay styles */
+        /* Removed .hero-bg-image::before overlay styles */
         .hero-content {
             position: relative;
             z-index: 2; /* Ensure content is above the overlay */
         }
+
+        /* Adjust background position for smaller screens */
+        @media (max-width: 767px) { /* Tailwinds 'md' breakpoint is 768px, so this covers 'sm' screens */
+            .hero-bg-image {
+                /* Shift background to the right to keep the person visible */
+                background-position: right center; /* Or 'right 10%' if you need a specific percentage */
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
+    <!-- Navbar -->
     <nav class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-10 rounded-b-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="flex items-baseline space-x-2">
@@ -124,6 +135,7 @@
                 <a href="gallery.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Gallery</a>
                 <a href="index.html#contact" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Contact</a>
             </div>
+            <!-- Mobile Menu Button -->
             <div class="flex items-center md:hidden space-x-2">
                 <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700">
                     <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -132,6 +144,7 @@
                 </button>
             </div>
         </div>
+        <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="md:hidden mt-4 hidden">
             <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Home</a>
             <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">About</a>
@@ -143,6 +156,8 @@
         </div>
     </nav>
 
+    <!-- Development Warning Banner - START -->
+    <!-- To remove this later, simply delete this entire div and its corresponding JavaScript below -->
     <div id="development-warning-banner" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 sticky top-0 md:top-[64px] z-20 flex items-center justify-between shadow-md" role="alert">
         <div class="flex items-center">
             <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -160,8 +175,12 @@
             </svg>
         </button>
     </div>
+    <!-- Development Warning Banner - END -->
+
     <main>
+        <!-- Hero Section -->
         <section class="min-h-screen flex items-center justify-center text-white py-20 px-6 md:pt-0 hero-bg-image">
+            <!-- Overlay for text readability - REMOVED -->
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between pl-8 md:pl-16 hero-content">
                 <div class="text-center md:text-left mb-10 md:mb-0 md:w-1/2 ">
                     <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down hero-title-font">
@@ -172,21 +191,25 @@
                     </p>
                 </div>
                 <div class="md:w-1/3 flex justify-center mt-8">
-                    </div>
+                    <!-- Profile Picture removed as per request -->
+                </div>
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-6">
                 <h2 class="text-4xl font-bold mb-12 text-center section-title text-green-800 mx-auto">What People Say</h2>
                 
                 <div class="testimonials-container overflow-hidden">
                     <div id="testimonials-wrapper" class="testimonials-wrapper">
-                        </div>
+                        <!-- Testimonial cards will be dynamically inserted here -->
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="py-16 px-6 bg-gray-100 rounded-b-xl shadow-inner md:py-20">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-8 section-title text-green-800 mx-auto">Get in touch</h2>
@@ -208,6 +231,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 px-6 text-center rounded-t-xl">
         <div class="max-w-7xl mx-auto">
             <p>&copy; 2025 Aditya Ladhane. All rights reserved.</p>
