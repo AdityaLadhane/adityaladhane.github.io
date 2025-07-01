@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aditya Ladhane - Home</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -33,54 +31,49 @@
             background-color: #166534; /* Green-800 for underline */
             border-radius: 9999px; /* Rounded line */
         }
-        /* Add padding to the top of the main content area to account for fixed navbar */
         main {
-            padding-top: 80px; /* Adjust this value to add more or less space from the top, assuming navbar is around 64px tall + extra space */
+            padding-top: 80px; 
         }
-        /* Custom font for navbar name and tagline */
         .navbar-brand-font {
             font-family: 'Dancing Script', cursive;
         }
-        /* Custom style to make the tagline appear as a subscript */
         .tagline-subscript {
-            font-size: 0.75em; /* Smaller font size relative to parent */
-            vertical-align: sub; /* Pushes it down like a subscript */
-            line-height: 1; /* Adjust line height to prevent extra space */
-            margin-left: 0.25rem; /* Small space after Aditya */
+            font-size: 0.75em; 
+            vertical-align: sub; 
+            line-height: 1; 
+            margin-left: 0.25rem; 
         }
-        /* Ensure that when the tagline hides, the main name doesn't shift */
-        @media (max-width: 639px) { /* Tailwind's default 'sm' breakpoint is 640px */
+        @media (max-width: 639px) { 
             .navbar-brand-name {
-                margin-bottom: 0; /* Remove any bottom margin when tagline hides */
+                margin-bottom: 0;
             }
         }
-        /* Hero section specific font and styling */
         .hero-title-font {
-            font-family: 'Playfair Display', serif; /* Apply Playfair Display */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle text shadow */
+            font-family: 'Playfair Display', serif; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
         }
         .text-yellow-300 {
-            color: #fde047; /* Retained: A bright accent color, complements green */
+            color: #fde047;
         }
 
-        /* Testimonials Scrolling Animation */
-        @keyframes scrollTestimonials {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); } /* Scrolls half the duplicated content width */
-        }
-
+        /* Testimonials Scrolling Interaction */
         .testimonials-container {
-            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: none; 
+            cursor: grab;
+            scroll-behavior: smooth;
+        }
+        .testimonials-container.grabbing {
+            cursor: grabbing;
+        }
+        .testimonials-container::-webkit-scrollbar {
+            display: none;
         }
 
         .testimonials-wrapper {
             display: inline-flex;
-            animation: scrollTestimonials 90s linear infinite;
-            animation-play-state: running;
             will-change: transform;
-        }
-        .testimonials-wrapper:hover {
-            animation-play-state: paused;
         }
 
         .testimonial-card {
@@ -90,36 +83,29 @@
             white-space: normal;
             box-sizing: border-box;
         }
-        .testimonial-card:first-child {
-            margin-left: 0;
-        }
 
         /* Hero Section Background Image Styles */
         .hero-bg-image {
-            background-image: url('Hero.jpg'); /* Your specified background image */
-            background-size: cover; /* Cover the entire section */
-            background-position: center; /* Default: center for larger screens */
-            background-repeat: no-repeat; /* Do not repeat */
-            position: relative; /* Needed for overlay positioning */
-            z-index: 0; /* Ensure it's behind content but above overlay */
+            background-image: url('Hero.jpg');
+            background-size: cover;
+            background-position: center; 
+            background-repeat: no-repeat;
+            position: relative;
+            z-index: 0; 
         }
-        /* Removed .hero-bg-image::before overlay styles */
         .hero-content {
             position: relative;
-            z-index: 2; /* Ensure content is above the overlay */
+            z-index: 2; 
         }
 
-        /* Adjust background position for smaller screens */
-        @media (max-width: 767px) { /* Tailwinds 'md' breakpoint is 768px, so this covers 'sm' screens */
+        @media (max-width: 767px) {
             .hero-bg-image {
-                /* Shift background to the right to keep the person visible */
-                background-position: right center; /* Or 'right 10%' if you need a specific percentage */
+                background-position: right center;
             }
         }
     </style>
 </head>
 <body class="antialiased">
-    <!-- Navbar -->
     <nav class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-10 rounded-b-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="flex items-baseline space-x-2">
@@ -135,7 +121,6 @@
                 <a href="gallery.html" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Gallery</a>
                 <a href="index.html#contact" class="text-gray-700 hover:text-green-800 font-medium transition-colors rounded-md px-3 py-2">Contact</a>
             </div>
-            <!-- Mobile Menu Button -->
             <div class="flex items-center md:hidden space-x-2">
                 <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700">
                     <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +129,6 @@
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="md:hidden mt-4 hidden">
             <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">Home</a>
             <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-800 rounded-md transition-colors">About</a>
@@ -156,9 +140,7 @@
         </div>
     </nav>
 
-    <!-- Development Warning Banner - START -->
-    <!-- To remove this later, simply delete this entire div and its corresponding JavaScript below -->
-    <div id="development-warning-banner" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 sticky top-0 md:top-[64px] z-20 flex items-center justify-between shadow-md" role="alert">
+    <div id="development-warning-banner" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 sticky top-0 md:top-[64px] z-20 flex items-center justify-between shadow-md hidden" role="alert">
         <div class="flex items-center">
             <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.487 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM10 11a1 1 0 100-2 1 1 0 000 2zm1-2a1 1 0 10-2 0V7a1 1 0 102 0v2z" clip-rule="evenodd"></path>
@@ -175,12 +157,9 @@
             </svg>
         </button>
     </div>
-    <!-- Development Warning Banner - END -->
 
     <main>
-        <!-- Hero Section -->
         <section class="min-h-screen flex items-center justify-center text-white py-20 px-6 md:pt-0 hero-bg-image">
-            <!-- Overlay for text readability - REMOVED -->
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between pl-8 md:pl-16 hero-content">
                 <div class="text-center md:text-left mb-10 md:mb-0 md:w-1/2 ">
                     <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down hero-title-font">
@@ -190,26 +169,30 @@
                         Just a student trying to make sense of it all.<br>Figuring life out, one step at a time.
                     </p>
                 </div>
-                <div class="md:w-1/3 flex justify-center mt-8">
-                    <!-- Profile Picture removed as per request -->
-                </div>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-4xl font-bold mb-12 text-center section-title text-green-800 mx-auto">What People Say</h2>
-                
-                <div class="testimonials-container overflow-hidden">
-                    <div id="testimonials-wrapper" class="testimonials-wrapper">
-                        <!-- Testimonial cards will be dynamically inserted here -->
+                <div class="flex flex-col sm:flex-row justify-center items-center text-center sm:text-left mb-12 relative">
+                    <h2 class="text-4xl font-bold section-title text-green-800 mb-6 sm:mb-0">What People Say</h2>
+                    <div class="sm:absolute right-0 flex space-x-3">
+                        <button id="prev-testimonial" class="bg-white border border-green-700 text-green-700 p-2 rounded-full shadow-md hover:bg-green-50 transition-colors focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button id="next-testimonial" class="bg-white border border-green-700 text-green-700 p-2 rounded-full shadow-md hover:bg-green-50 transition-colors focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
                     </div>
+                </div>
+                
+                <div id="testimonials-container" class="testimonials-container">
+                    <div id="testimonials-wrapper" class="testimonials-wrapper">
+                        </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-16 px-6 bg-gray-100 rounded-b-xl shadow-inner md:py-20">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-8 section-title text-green-800 mx-auto">Get in touch</h2>
@@ -217,7 +200,7 @@
                     Don't be a stranger — drop a message!
                 </p>
                 <div class="flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:justify-center md:space-x-6">
-                    <a href="mailto:adityaladhane@gmail.com" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-800 transition-colors transform hover:scale-105">
+                    <a href="mailto:adityaladhane@gmail.com" id="email-button" class="bg-green-700 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-800 transition-colors transform hover:scale-105">
                         Email Me
                     </a>
                     <a href="https://www.linkedin.com/in/adityaladhane/" target="_blank" class="bg-blue-700 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-800 transition-colors transform hover:scale-105">
@@ -231,7 +214,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 px-6 text-center rounded-t-xl">
         <div class="max-w-7xl mx-auto">
             <p>&copy; 2025 Aditya Ladhane. All rights reserved.</p>
@@ -239,116 +221,89 @@
     </footer>
 
     <script>
-        // All JavaScript code for index.html is consolidated here to prevent redeclaration errors
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Consolidated JS for the entire page ---
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                // Only scroll if it's an internal anchor on the current page
-                if (this.getAttribute('href').startsWith('#')) {
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Development Warning Banner Logic
+            const devWarningBanner = document.getElementById('development-warning-banner');
+            const closeWarningButton = document.getElementById('close-warning-banner');
+            const hasDismissedWarning = localStorage.getItem('adityaDevWarningDismissed');
+            if (devWarningBanner && !hasDismissedWarning) {
+                devWarningBanner.classList.remove('hidden');
+            }
+            if (closeWarningButton) {
+                closeWarningButton.addEventListener('click', () => {
+                    if (devWarningBanner) {
+                        devWarningBanner.classList.add('hidden');
+                        localStorage.setItem('adityaDevWarningDismissed', 'true');
+                    }
+                });
+            }
+            
+            // --- Email Button Logic ---
+            const emailButton = document.getElementById('email-button');
+            if (emailButton) {
+                // Check if the user is likely on a mobile device
+                const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+                
+                if (!isMobile) {
+                    emailButton.addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default mailto: action
+                        const email = 'adityaladhane@gmail.com';
+                        navigator.clipboard.writeText(email).then(() => {
+                            // Success! Change button text and revert after a delay
+                            const originalText = emailButton.textContent;
+                            emailButton.textContent = 'Email Copied!';
+                            setTimeout(() => {
+                                emailButton.textContent = originalText;
+                            }, 2000); // Revert after 2 seconds
+                        }).catch(err => {
+                            console.error('Failed to copy email: ', err);
+                            // Optional: Alert the user that copying failed
+                            alert('Failed to copy email. Please copy it manually: ' + email);
+                        });
                     });
-                } else {
-                    // For external links (to other HTML pages), navigate directly
-                    window.location.href = this.getAttribute('href');
                 }
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-                mobileMenu.classList.toggle('flex-col');
-                mobileMenu.classList.toggle('items-start');
-                mobileMenu.classList.toggle('space-y-2');
-                mobileMenu.classList.toggle('py-2');
-                mobileMenu.classList.toggle('px-4');
-                mobileMenu.classList.toggle('bg-white');
-                mobileMenu.classList.toggle('rounded-b-lg');
-                mobileMenu.classList.toggle('shadow');
-            });
-        }
-
-
-        // Manual Lazy Loading Fallback for older browsers (though loading="lazy" is widely supported)
-        document.addEventListener("DOMContentLoaded", function() {
-            const lazyImages = document.querySelectorAll('img[data-src][loading="lazy"]');
-
-            if ('IntersectionObserver' in window) {
-                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            let lazyImage = entry.target;
-                            lazyImage.src = lazyImage.dataset.src;
-                            lazyImage.removeAttribute('data-src');
-                            lazyImageObserver.unobserve(lazyImage);
-                        }
-                    });
-                });
-
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImageObserver.observe(lazyImage);
-                });
-            } else {
-                // Fallback for browsers that do not support Intersection Observer (or loading="lazy")
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.removeAttribute('data-src');
-                });
+                // On mobile, the default href="mailto:..." behavior will proceed as normal.
             }
-        });
 
-        // --- Testimonials Scrolling Logic ---
-        const testimonials = [
-            {
-                quote: "Aditya's got a real knack for this stuff! Super quick to pick things up, and genuinely impressive with how fast he gets it.",
-                author: "Dr. A. Sharma",
-                title: "Professor, D. Y. Patil Institute",
-                profilePic: "https://placehold.co/64x64/E0E7FF/4338CA?text=AS" // Placeholder for A. Sharma
-            },
-            {
-                quote: "Seriously, working with Aditya is a breeze. He's always got fresh ideas and a 'let's fix this!' attitude. Big fan!",
-                author: "Ms. B. Singh",
-                title: "Project Mentor",
-                profilePic: "https://placehold.co/64x64/DBEAFE/1D4ED8?text=BS" // Placeholder for B. Singh
-            },
-            {
-                quote: "You can just tell Aditya loves tech by his work. He's always diving into new tools and leveling up his skills. Awesome to see!",
-                author: "Mr. C. Kumar",
-                title: "Senior Developer",
-                profilePic: "https://placehold.co/64x64/D1FAE5/065F46?text=CK" // Placeholder for C. Kumar
-            },
-            {
-                quote: "Aditya's work is always top-notch, no kidding. He's super dependable – definitely someone you want on your team!",
-                author: "Ms. D. Reddy",
-                title: "Team Lead",
-                profilePic: "https://placehold.co/64x64/FCE7F3/BE185D?text=DR" // Placeholder for D. Reddy
-            },
-            {
-                quote: "This kid's got a bright future. Really solid on the web basics, and just generally a very keen student.",
-                author: "Mr. E. Patil",
-                title: "Industry Professional",
-                profilePic: "https://placehold.co/64x64/FFF7ED/D97706?text=EP" // Placeholder for E. Patil
-            }
-        ];
+            // --- Testimonials Data and Logic ---
+            const testimonials = [
+                { quote: "Aditya's got a real knack for this stuff! Super quick to pick things up, and genuinely impressive with how fast he gets it.", author: "Dr. A. Sharma", title: "Professor, D. Y. Patil Institute", profilePic: "https://placehold.co/64x64/E0E7FF/4338CA?text=AS" },
+                { quote: "Seriously, working with Aditya is a breeze. He's always got fresh ideas and a 'let's fix this!' attitude. Big fan!", author: "Ms. B. Singh", title: "Project Mentor", profilePic: "https://placehold.co/64x64/DBEAFE/1D4ED8?text=BS" },
+                { quote: "You can just tell Aditya loves tech by his work. He's always diving into new tools and leveling up his skills. Awesome to see!", author: "Mr. C. Kumar", title: "Senior Developer", profilePic: "https://placehold.co/64x64/D1FAE5/065F46?text=CK" },
+                { quote: "Aditya's work is always top-notch, no kidding. He's super dependable – definitely someone you want on your team!", author: "Ms. D. Reddy", title: "Team Lead", profilePic: "https://placehold.co/64x64/FCE7F3/BE185D?text=DR" },
+                { quote: "This kid's got a bright future. Really solid on the web basics, and just generally a very keen student.", author: "Mr. E. Patil", title: "Industry Professional", profilePic: "https://placehold.co/64x64/FFF7ED/D97706?text=EP" }
+            ];
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const testimonialsWrapper = document.getElementById('testimonials-wrapper');
-            if (testimonialsWrapper) {
-                // Duplicate testimonials for a seamless loop
-                const doubledTestimonials = [...testimonials, ...testimonials];
-
-                doubledTestimonials.forEach(testimonial => {
+            const container = document.getElementById('testimonials-container');
+            const wrapper = document.getElementById('testimonials-wrapper');
+            if (container && wrapper) {
+                const allTestimonials = [...testimonials, ...testimonials]; 
+                allTestimonials.forEach(testimonial => {
                     const card = document.createElement('div');
                     card.className = 'testimonial-card bg-white p-6 rounded-xl shadow-md';
-                    // Added flex and items-center to the header for image and text alignment
                     card.innerHTML = `
                         <div class="flex items-center mb-4">
                             <img src="${testimonial.profilePic}" alt="${testimonial.author} profile picture" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/64x64/B91C1C/FFFFFF?text=Error';">
@@ -359,30 +314,79 @@
                         </div>
                         <p class="text-gray-700 italic leading-relaxed">"${testimonial.quote}"</p>
                     `;
-                    testimonialsWrapper.appendChild(card);
+                    wrapper.appendChild(card);
                 });
-            }
 
-            // --- Development Warning Banner Logic ---
-            const devWarningBanner = document.getElementById('development-warning-banner');
-            const closeWarningButton = document.getElementById('close-warning-banner');
-            const hasDismissedWarning = localStorage.getItem('adityaDevWarningDismissed');
+                // --- Balanced Scrolling Logic ---
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                let autoScrollInterval;
+                let resumeTimer;
 
-            // Show banner if not previously dismissed
-            if (devWarningBanner && !hasDismissedWarning) {
-                devWarningBanner.classList.remove('hidden');
-            } else if (devWarningBanner) {
-                devWarningBanner.classList.add('hidden'); // Ensure it's hidden if dismissed
-            }
+                const startAutoScroll = () => {
+                    clearInterval(autoScrollInterval); 
+                    autoScrollInterval = setInterval(() => {
+                        const cardWidth = 350;
+                        const cardMargin = 32;
+                        const totalOriginalsWidth = testimonials.length * (cardWidth + cardMargin);
+                        
+                        if (container.scrollLeft >= totalOriginalsWidth) {
+                            container.scrollLeft = 0;
+                        } else {
+                            container.scrollLeft += 1;
+                        }
+                    }, 25); 
+                };
 
-            // Add event listener to close button
-            if (closeWarningButton) {
-                closeWarningButton.addEventListener('click', () => {
-                    if (devWarningBanner) {
-                        devWarningBanner.classList.add('hidden');
-                        localStorage.setItem('adityaDevWarningDismissed', 'true'); // Remember dismissal
+                const pauseAutoScroll = () => {
+                    clearInterval(autoScrollInterval);
+                    clearTimeout(resumeTimer);
+                };
+
+                const resumeAutoScrollAfterDelay = () => {
+                    clearTimeout(resumeTimer);
+                    resumeTimer = setTimeout(startAutoScroll, 3000); 
+                };
+
+                container.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    pauseAutoScroll();
+                    container.classList.add('grabbing');
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                });
+
+                container.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    container.scrollLeft = scrollLeft - walk;
+                });
+
+                window.addEventListener('mouseup', () => {
+                    if (isDown) {
+                        isDown = false;
+                        container.classList.remove('grabbing');
+                        resumeAutoScrollAfterDelay();
                     }
                 });
+                
+                const nextBtn = document.getElementById('next-testimonial');
+                const prevBtn = document.getElementById('prev-testimonial');
+                const cardScrollWidth = 350 + 32;
+
+                const handleButtonClick = (scrollAmount) => {
+                    pauseAutoScroll();
+                    container.scrollLeft += scrollAmount;
+                    resumeAutoScrollAfterDelay();
+                };
+
+                nextBtn.addEventListener('click', () => handleButtonClick(cardScrollWidth));
+                prevBtn.addEventListener('click', () => handleButtonClick(-cardScrollWidth));
+
+                startAutoScroll();
             }
         });
     </script>
